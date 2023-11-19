@@ -1,0 +1,60 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+body{
+    background: url("https://images.unsplash.com/photo-1531533748270-34089046fb49?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8d2F0ZXIlMjBkcm9wfGVufDB8fDB8fHww&auto=format&fit=crop&w=1200&q=60")  ;
+}
+
+.container {
+    max-width: 469px;
+    margin: auto;
+    height: 65vh;
+    margin-top: 98px;
+    border-radius: 0;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    border: 3px solid #48a7e4;
+    border-radius: 91px;
+    justify-content: center;
+    text-align: center;
+    background-color: #ede2ff;
+}
+h1{
+    color: #6307ff;
+
+    margin: 28px;
+
+}
+label{
+    font-weight: bolder;
+    font-weight: bolder;
+    color: #ff6c00;
+    font-size: 24px;
+
+}
+input{
+    font-size: 20px;
+    color: black;
+    background-color: transparent;
+    text-align: center;
+    padding: 5px;
+    margin: 6px;
+    border-radius: 100px;
+}
+.password input{
+    margin-right: 42px;
+}
+button {
+    font-size: 24px;
+    background-color: rgb(255 205 151);
+    border-radius: 13px;
+    padding: 5px 18px;
+    margin-top: 31px;
+}
+button:hover{
+    font-size: 26px;
+    background-color: rgb(153 255 197);
+
+}

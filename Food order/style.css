@@ -1,0 +1,265 @@
+/* CSS Reset*/
+* {
+    margin: 0px;
+    padding: 0px;
+    font-family: 'Roboto Mono', monospace;
+}
+html{
+    scroll-behavior: smooth;
+}
+/* Variable */
+:root {
+    --navbar-hight: 59px;
+}
+
+#logo img {
+    height: 60px;
+    padding: 9% 38px;
+    cursor: pointer;
+}
+
+/* Navigationbar */
+
+
+#navbar {
+    display: flex;
+    align-items: center;
+    position: sticky;
+    top: 0px;
+    left: 0px;
+}
+
+#navbar ul {
+    display: flex;
+
+
+
+
+}
+
+#navbar ul li {
+    display: block;
+    padding: 30px 60px;
+    list-style: none;
+    padding: 16px 30px;
+    font-size: 21px;
+}
+
+#navbar ul li a {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+}
+
+#navbar::before {
+    content: "";
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 80%;
+    position: absolute;
+    background-color: rgb(113, 185, 236);
+    opacity: 0.3;
+    z-index: -1;
+
+}
+
+#navbar ul li a:hover,
+.item.active {
+    text-decoration: underline;
+    background-color: aqua;
+    color: rgb(5, 5, 5);
+    border-radius: 10%;
+
+}
+/*main content*/
+
+#home {
+    margin-top: 30px;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    padding: 13px 90px;
+    align-items: center;
+    color: white;
+    height: 300px;
+}
+
+.main::before{ 
+    content: "";
+    position: absolute;
+    background: url('bg1.jpg') no-repeat center center/cover;
+    height: 642px;
+    top:0px;
+    left:0px;
+    width: 100%;
+    z-index: -1;
+    opacity:0.89;
+}
+
+#home p {
+    margin: 34px;
+    margin-bottom: 20px;
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+
+}
+
+#h-home {
+    margin-top: 4px;
+    margin-bottom: 20px;
+    font-size: 44px;
+    color: rgb(255, 255, 255);
+    text-align: center;
+
+}
+/* Button */
+.h-btn {
+    margin-top: 30px;
+    font-size: 20px;
+    border-radius: 12px;
+    cursor: pointer;
+    background-color: aqua;
+    padding: 5px 12px;
+}
+
+.h-btn:hover {
+    color: black;
+    background-color: rgb(80, 255, 80);
+    font-size: 30px;
+}
+/* services */
+#service {
+    margin-top: 210px;
+
+}
+
+#service h1 {
+    font-weight: bold;
+    font-size: 30px;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+#box img {
+    height: 160px;
+    display: block;
+    margin: auto;
+    padding: 23px;
+}
+
+#box {
+    background-color: #fff;
+    border: 2px solid blue;
+    text-align: center;
+    margin: 5px 10px;
+    border-radius: 20px;
+    background-color: #f3d5ff;
+    cursor: pointer;
+
+}
+
+
+#box p {
+    padding: 7px;
+}
+
+#box:hover {
+    box-shadow: -18px -18px rgb(56, 53, 143);
+    border-radius: 20px;
+}
+
+.items {
+
+    background-color: rgba(255, 160, 160, 0.486);
+    display: flex;
+}
+
+#services h1 {
+    text-align: center;
+    font-size: 30px;
+    margin: 10px;
+}
+/* Our clients */
+.clients {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.client img {
+    height: 114px;
+    margin: 34px;
+    position: relative;
+    z-index: -1;
+
+
+}
+
+.clients::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    /* background: url('../bg.jpg'); */
+    background: url("https://images.unsplash.com/photo-1498837167922-ddd27525d352?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGZvb2R8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=800&q=60") no-repeat center center/cover;
+    opacity: .4;
+    z-index: -1;
+    /* content: "";
+    position: absolute;
+    background: url('../bg1.jpg') no-repeat center center/cover;
+    height: 642px;
+    top:0px;
+    left:0px;
+    width: 100%;
+    z-index: -1;
+    opacity:0.89;
+} */
+}
+/* Contact form  */
+#form-box {
+    position: relative;
+    justify-content: center;
+}
+
+#form h1 {
+    text-align: center;
+    font-size: 30px;
+}
+
+#form-box input,
+#form-box textarea {
+    border-radius: 7px;
+    width: 100%;
+    margin: 9px 0px;
+    text-align: center;
+    padding: 5px;
+
+}
+
+#form-box label {
+    font-size: 18px;
+}
+
+#form-box::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background: url("https://media.istockphoto.com/id/1399582867/photo/woman-checking-the-grocery-receipt.webp?b=1&s=170667a&w=0&k=20&c=EfmfoMfbYd0SAtpe38gatDOiDM2VsRA_N20LkCEygy8=") no-repeat center center/cover;
+    opacity: .4;
+    z-index: -1;
+}
+
+.form-start {
+    display: block;
+    padding: 31px;
+    width: 50%;
+    margin: auto;
+}
+/* footer */
+footer {
+    text-align: center;
+    background-color: #fae9e9;
+}

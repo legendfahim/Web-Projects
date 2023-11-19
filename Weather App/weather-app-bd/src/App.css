@@ -1,0 +1,166 @@
+/* define empty of full body */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: #fae4e4;
+}
+
+/* main header of the app */
+.headerSection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+}
+.headerText {
+  font-family: cursive;
+  width: max-content;
+  cursor: context-menu;
+  text-align: center;
+  color: #ff5f5f;
+  font-size: 30px;
+  /* border: 2px solid black; */
+  border-radius: 7px;
+  padding: 10px;
+  margin: 20px 0;
+  box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;
+}
+
+/* main contain or box of the app */
+.containerHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.main {
+  background-color: #fff;
+  height: 74vh;
+  width: 40%;
+  margin: auto;
+  border-radius: 23px;
+  box-shadow: rgb(0 0 0 / 35%) 0px 5px 15px;
+  background-size: cover; /* or contain, depending on your preference */
+  background-position: center; /* or other position values */
+  background-repeat: no-repeat;
+
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  /* background-image: url("https://images.unsplash.com/photo-1601134467661-3d775b999c8b?auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8d2VhdGhlcnxlbnwwfHwwfHx8MA%3D%3D&w=800"); */
+}
+
+/* subtitle of the main container  */
+.subtitle {
+  font-family: sans-serif;
+  font-size: smaller;
+  text-align: center;
+  margin-top: 8px;
+  margin-left: 4px;
+  margin-right: 4px;
+}
+.devName {
+  font-weight: bold;
+  color: white;
+}
+/* main input Field of the container  */
+.inputField {
+  background-color: #fff;
+  margin: 19px 0;
+  font-size: 22px;
+  width: 77%;
+  text-align: center;
+  border: groove;
+  box-shadow: 5px 5px 10px #6b69d3b0;
+  padding: 6px;
+  border-radius: 15px;
+}
+.inputField::placeholder {
+  font-size: 15px;
+}
+input:focus {
+  border: 2px solid black;
+  background-color: rgb(255, 255, 255);
+}
+
+/* info section of the main container */
+.countryName {
+  font-size: 45px;
+  font-family: sans-serif;
+  font-weight: bold;
+}
+
+/* main container header content  */
+.header {
+  height: 50%;
+}
+
+/* main container footer section */
+.footer {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  height: 50%;
+}
+
+/* main container footer content */
+.info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: -webkit-fill-available;
+}
+
+/* main container footer content main data*/
+.data {
+  font-size: -webkit-xxx-large;
+  font-family: serif;
+  font-weight: bold;
+  color: #1d0000;
+  text-shadow: 3px 2px 4px #000000;
+}
+
+/* responsiveness of small screen  */
+/* Styles to apply when the screen width is 600 pixels or more */
+@media screen and (min-width: 280px) and (max-width: 767px) {
+  .headerText {
+    font-size: 22px;
+  }
+  .data {
+    font-size: 30px;
+  }
+  .main {
+    width: 60%;
+    height: 67vh;
+  }
+  .countryName {
+    font-size: 31px;
+    text-shadow: 3px 2px 4px #ffffff;
+  }
+}
+@media screen and (min-width: 767px) and (max-width: 912px) {
+  .main {
+    width: 70%;
+    height: 67vh;
+  }
+
+  .data {
+    font-size: 40px;
+  }
+  .subtitle {
+    margin-top: 26px;
+  }
+  .inputField {
+    margin: 28px 0;
+  }
+  .inputField::placeholder {
+    font-size: 25px;
+  }
+}
+@media screen and (max-width: 280px) {
+  .data {
+    font-size: 20px;
+  }
+}

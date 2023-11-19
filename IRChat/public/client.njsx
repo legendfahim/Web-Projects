@@ -1,0 +1,75 @@
+let name = 'no name';
+let room = 'my_room'
+let id = null
+const socket = io();
+
+// Function to append a message to the container
+function appendMessage(user, message, type) {
+	console.log(user)
+
+	let mainDiv = <div class="message">
+		<h4>{user ? user : ""}</h4>
+		<p>{message}</p>
+	</div>
+	
+	mainDiv.classList.add(type)
+	
+	document.querySelector('.container').appendChild(<div _class="msg">{mainDiv}</div>);
+}
+
+// Get the username from the user
+
+// Function to prompt for a username until a valid one is provided
+function getUsername() {
+	let ask = prompt('Please enter your name');
+	if(ask.length > 2) {
+		name = ask
+	}
+	else {
+		alert("Name length requires at least 3 chars!")
+		getUsername()
+	}
+}
+
+getUsername(); // Call the function to get the username
+
+// Handle form submission
+const chatForm = document.getElementById('send-container');
+chatForm.addEventListener('submit', (e) => {
+	e.preventDefault();
+	const messageInput = document.getElementById('messageInp');
+	const message = messageInput.value.trim();
+	if (message !== '') {
+		// Send the message to the server
+		let msg_data = { 
+			user: name,
+			message: message 
+		}
+		socket.emit('sendMessage', msg_data);
+		
+		// Clear input field
+		messageInput.value = '';
+	}
+});
+
+// Listen for incoming messages from the server
+socket.on('message', (data) => {
+	console.log(data)
+	let user = data.username;
+	let id = data.id
+	let message = data.text;
+	
+	// Append the message to the container
+	if(id == socket.id) appendMessage(user, message, 'message-right');
+	else if(id == null) appendMessage(null, message, 'message-center');
+	else appendMessage(user, message, 'message-left');
+	
+	// Scroll down to the latest message
+	const messageArea = document.querySelector('.container');
+	messageArea.scrollTop = messageArea.scrollHeight;
+});
+
+// Join the chat room after setting the username
+socket.on('connect', (e) => {
+	socket.emit('joinRoom', { user: name, room: room });
+});

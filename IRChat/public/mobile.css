@@ -1,0 +1,26 @@
+nav h1 {
+    padding: 11px;
+    font-size: 20px;
+}
+.message-right {
+    margin: 10px;
+    width: 37%;
+    height: auto;
+    padding: 8px;
+    box-shadow: -5px -5px #726f879c;
+}
+.message-left {
+    margin: 10px;
+    width: 37%;
+    height: auto;
+    padding: 8px;
+    box-shadow: 5px -5px #a8faff9c;
+}
+.message-center {
+
+    margin: 10px 70px;
+    color: #ff2d2d;
+    font-size: 11px;
+    padding: 3px;
+    
+}

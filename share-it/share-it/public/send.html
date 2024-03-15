@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>File Room</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <section class="text-gray-600 body-font">
+      <div
+        class="container mx-auto flex flex-col px-5 py-24 justify-center items-center"
+      >
+        <div
+          class="w-full md:w-2/3 flex flex-col mb-16 items-center text-center"
+        >
+          <h1
+            class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900"
+          >
+            Create a Room To Share or Receive Files
+          </h1>
+
+          <div class="flex w-full justify-center items-end">
+            <div
+              class="relative mr-4 lg:w-full xl:w-1/2 w-2/4 md:w-full text-left"
+            >
+              <label for="code-field" class="leading-7 text-sm text-gray-600">
+                Create Code
+              </label>
+              <input
+                type="number"
+                id="code-field"
+                class="w-full bg-gray-100 bg-opacity-50 rounded focus:ring-2 focus:ring-indigo-200 focus:bg-transparent border border-gray-300 focus:border-indigo-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+              />
+            </div>
+            <button
+              id="create-button"
+              class="inline-flex text-white bg-blue-500 border-0 py-2 px-6 focus:outline-none hover:bg-blue-600 rounded text-lg"
+            >
+              Create
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="https://cdn.socket.io/4.7.4/socket.io.min.js"></script>
+
+    <script>
+      const socket = io("/send");
+      const createButton = document.getElementById("create-button");
+      const code = document.getElementById("code-field");
+      createButton.addEventListener("click", () => {
+        if (code.value === "") {
+          alert("Please Input number to create Room");
+        } else {
+          socket.emit("join-room", code.value);
+
+          window.location.href = "/share";
+        }
+      });
+    </script>
+  </body>
+</html>

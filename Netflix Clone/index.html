@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Netflix Bangladesh - Watch TV Shows Online, Watch Movies Online
+    </title>
+    <link rel="shortcut icon" href="images.jpg" type="image/x-icon" />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <!-- Banner section -->
+    <section
+      class="w-[100%] h-[100vh] bg-[url('images/background.jpg')] bg-cover bg-center"
+    >
+      <div class="w-[100%] h-[100vh] bg-[rgba(0,0,0,0.5)]">
+        <!-- Header  -->
+        <header class="max-w-[1170px] m-auto">
+          <div
+            class="grid sm:grid-cols-2 grid-cols-[30%_auto] px-[10px] items-center"
+          >
+            <!--Left section logo -->
+            <figure>
+              <img
+                src="images/images.jpg"
+                alt="Netflix logo"
+                class="w-[148px]"
+              />
+            </figure>
+            <!--Right section Dropdown & button  -->
+            <div class="flex justify-end gap-[10px]">
+              <div>
+                <select
+                  class="bg-black border-[1px] border-white text-white sm:p-[5px_25px] p-[5px_20px] rounded-[5px]"
+                >
+                  <option value="">English</option>
+                  <option value="">Bangla</option>
+                </select>
+              </div>
+              <button
+                class="bg-red-600 text-white font-bold py-1 px-2 rounded-[5px]"
+              >
+                Sign in
+              </button>
+            </div>
+          </div>
+        </header>
+        <div
+          class="max-w-[1170px] sm:my-[100px] mx-auto sm:py[150px] py-[50px] text-center text-white"
+        >
+          <h1 class="sm:text-[45px] text-[30px] font-bold">
+            Unlimited movies, TV shows, and more
+          </h1>
+          <p class="sm:text:[25px] text-[18px] py-[10px]">
+            Watch anywhere. Cancel anytime.
+          </p>
+          <p class="sm:text-[27px] text-[20px]">
+            Ready to watch? Enter your email to create or restart your
+            membership.
+          </p>
+          <div class="max-w-[700px] mx-auto sm:px-[10px] mt-[30px] px-[40px]">
+            <form
+              action=""
+              class="gap-[20px] grid sm:grid-cols-[70%_auto] grid-cols-1"
+            >
+              <input
+                type="text"
+                class="bg-transparent border-[1px] border-white h-[50px] pl-[20px]"
+                placeholder="Email Address"
+              />
+              <button
+                class="bg-red-600 rounded-lg py-[15px] hover:bg-red-700 duration-300"
+              >
+                Get Started
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Enjoy on your TV  -->
+    <section
+      class="w-[100%] border-t-[5px] b-t-[#605d5d] bg-black sm:py-[100px] py-[50px]"
+    >
+      <div class="max-w-[1170px] mx-auto p-[15px]">
+        <div class="grid sm:grid-cols-2 grid-cols-1 text-white items-center">
+          <div>
+            <h1 class="sm:text-[50px] text-[40px] font-bold">
+              Enjoy on your TV
+            </h1>
+            <p class="text-[20px] sm:text-[25px] pt-[30px]">
+              Watch on Smart TVs, Playstation, Xbox, Chromecast, Apple TV,
+              Blu-ray players, and more.
+            </p>
+          </div>
+          <figure class="relative">
+            <video class="absolute w-[80%] bottom-[20%] left-[10%] z-[1]">
+              <source src="images/video-tv-0819.m4v" />
+            </video>
+            <img src="images/tv.png" alt="Tv image" class="relative z-[2]" />
+          </figure>
+        </div>
+      </div>
+    </section>
+    <!-- Download your shows to watch offline -->
+    <section
+      class="w-[100%] border-t-[5px] b-t-[#605d5d] bg-black sm:py-[100px] py-[50px]"
+    >
+      <div class="max-w-[1170px] mx-auto p-[15px]">
+        <div class="grid sm:grid-cols-2 grid-cols-1 text-white items-center">
+          <figure class="relative sm:order-1 order-2">
+            <img src="images/mobile-0819.jpg" alt="Box background image" />
+            <div
+              class="absolute sm:w-[50%] sm:left-[25%] w-[80%] left-[10%] border-[1px] border-[#ccc] bottom-[0px] bg-black rounded-lg items-center"
+            >
+              <div class="grid grid-cols-[70%_auto] items-center">
+                <div
+                  class="grid grid-cols-[20%_auto] sm:grid-cols-[30%_auto] gap-[10px] p-[10px]"
+                >
+                  <img
+                    src="images/boxshot.png"
+                    alt="boxshot"
+                    class="m-[10px]"
+                  />
+                  <div class="text-white pl-[10px]">
+                    <h1 class="sm:text-[18px] text-[14px] font-bold p-[2px]">
+                      Stranger Things
+                    </h1>
+                    <b class="text-blue-700">Downloading...</b>
+                  </div>
+                </div>
+                <div><img src="images/download-icon.gif" alt="Loading" /></div>
+              </div>
+            </div>
+          </figure>
+          <div class="sm:order-2 order-1 sm:text-left text-center">
+            <h1 class="sm:text-[50px] text-[40px] font-bold">
+              Download your <br />
+              shows to watch <br />offline
+            </h1>
+            <p class="text-[20px] sm:text-[25px] pt-[30px]">
+              Save your favorites easily and always have something to watch.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

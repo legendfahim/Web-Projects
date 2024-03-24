@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Word Counter || Developed by Istiak Rahman</title>
+    <link rel="shortcut icon" href="logo.png" type="image/x-icon" />
+  </head>
+  <link rel="stylesheet" href="style.css" />
+  <link
+    rel="stylesheet"
+    media="screen and (max-width: 910px)"
+    href="mobile.css"
+  />
+
+  <body>
+    <div class="title">
+      <label for="textarea"><h1>Word Counter</h1></label>
+    </div>
+    <div class="text">
+      <textarea id="textarea"></textarea>
+      <button type="button" id="b">Count</button>
+    </div>
+    <div>
+      <h2 id="counter">Total Words: <span id="number">0</span></h2>
+    </div>
+    <footer>
+      <h1>Developed by Istiak Rahman</h1>
+    </footer>
+    <script src="node_modules/cwords/src/index.js"></script>
+    <script src="index.js"></script>
+  </body>
+</html>

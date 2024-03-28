@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Email Bomber... Fun for Use</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Tac+One&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="shortcut icon" href="logo.jpg" type="image/x-icon">
+    <style>
+      body {
+        background-color: #b7dbff;
+      }
+
+      section {
+        margin: 20px;
+      }
+
+      form {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgb(91, 93, 247);
+        width: 80%;
+        margin: auto;
+      }
+
+      .text-area {
+        resize: none;
+      }
+
+      .submitBtn {
+        margin: auto;
+        display: block;
+        width: 30%;
+        background-color: rgb(40, 117, 117);
+      }
+
+      #title {
+        justify-content: center;
+        display: flex;
+        color: rgb(199 90 41);
+        font-family: "Tac One", sans-serif;
+        font-weight: 400;
+        font-style: normal;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Sender Section  -->
+    <section>
+      <form id="emailForm">
+        <h1 id="title">Email Bomber</h1>
+        <div class="form-group">
+          <label for="exampleFormControlInput1">Receiver Email address</label>
+          <input
+            type="email"
+            name="receiver-email"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder="name@example.com"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlSelect1">Number of Emails</label>
+          <input
+            type="number"
+            name="num-emails"
+            id="exampleFormControlSelect1"
+            required
+            min="1"
+            oninput="checkInputValidity(this);"
+          />
+        </div>
+        <div class="form-group">
+          <label for="Subject">Subject</label>
+          <input
+            class="form-control subject"
+            id="Subject"
+            name="subject"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlTextarea1">Email Body</label>
+          <textarea
+            class="form-control text-area"
+            id="exampleFormControlTextarea1"
+            rows="10"
+            name="email-body"
+            required
+          ></textarea>
+        </div>
+        <button type="button" id="submitBtn" class="btn btn-primary submitBtn">
+          Submit
+        </button>
+      </form>
+    </section>
+    <script>
+      function checkInputValidity(input) {
+        // Get the input value
+        const inputValue = input.value;
+
+        // Check if the input value is less than 1
+        if (inputValue < 1) {
+          alert("Please enter a number greater than or equal to 1.");
+          input.value = ""; // Clear the input field
+        }
+      }
+      document
+        .getElementById("submitBtn")
+        .addEventListener("click", function () {
+          const form = document.getElementById("emailForm");
+          const formData = new FormData(form);
+          const data = {};
+          formData.forEach((value, key) => {
+            data[key] = value;
+          });
+
+          fetch("http://localhost:3000/api/mail/send", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json", // Set Content-Type header
+            },
+            body: JSON.stringify(data), // Convert data to JSON format
+          })
+            .then((response) => response.json())
+            .then((data) => {
+              alert(
+                `Email sent successfully. Total emails: ${data["Number-of-mails"]}`
+              );
+              // console.log(data); // Log response from server
+            })
+            .catch((error) => {
+              console.error("Error:", error);
+              // Handle errors
+            });
+        });
+    </script>
+  </body>
+</html>

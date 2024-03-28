@@ -3,6 +3,11 @@
   padding: 0;
   box-sizing: border-box;
 }
+::selection {
+  background-color: #8400ff;
+  color: #fff;
+}
+
 body {
   background-color: #ece4ff;
 }

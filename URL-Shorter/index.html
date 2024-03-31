@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>URL Shortener || Developed by Istiak Rahman</title>
+    <link rel="shortcut icon" href="logo.png" type="image/x-icon" />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body class="bg-gray-100">
+    <div
+      class="container border bg-[#ffc85f] shadow-lg border-none rounded-md p-3 w-[75%] h-72 mx-auto mt-[15%] sm:mt-[7%] sm:w-[40%]"
+    >
+      <h1 class="mx-auto my-2 justify-center flex text-xl font-bold">
+        URL Shortener
+      </h1>
+      <form id="urlForm" class="mx-2 flex flex-col">
+        <input
+          type="text"
+          id="urlInput"
+          class="bg-white mx-1 my-2 h-10 w-full text-center rounded-md focus:border-green-200 focus:outline-none focus:ring-2 focus:ring-red-200"
+          name="urlInput"
+          placeholder="Enter Long URL"
+        />
+        <button
+          type="submit"
+          class="justify-center w-[60%] mx-auto mt-2 bg-[#4fd8ff] px-2 py-1 rounded-md hover:bg-[#1e9dc1]  hover:text-white duration-1000"
+        >
+          Shorten URL
+        </button>
+      </form>
+
+      <div
+        id="shortenedUrl"
+        class="cursor-pointer w-fit mx-auto my-4 px-2 py-1 rounded-sm shadow-md"
+      >
+  
+      </div>
+    </div>
+
+    <!-- Functions and logics  -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+      document
+        .getElementById("urlForm")
+        .addEventListener("submit", async function (event) {
+          event.preventDefault();
+
+          const urlInput = document.getElementById("urlInput").value;
+          if (urlInput === "") {
+            alert("Enter your long URL");
+          } else {
+            try {
+              // Make a POST request to your API endpoint
+              const response = await axios.post("http://localhost:3000/", {
+                url: urlInput,
+              });
+
+              const shortenedUrl = response.data.shortenedUrl;
+             let divUrl= document.getElementById(
+                "shortenedUrl"
+              )
+              divUrl.innerText = ` ${shortenedUrl}`;
+           divUrl.classList.add("bg-gray-100")
+            } catch (error) {
+              console.error("Error:", error.response.data.error);
+            }
+          }
+        });
+
+      // Function to copy text to clipboard
+      function copyToClipboard(text) {
+        const textarea = document.createElement("textarea");
+
+        textarea.value = text;
+
+        document.body.appendChild(textarea);
+
+        textarea.select();
+
+        document.execCommand("copy");
+
+        document.body.removeChild(textarea);
+
+        alert("Copied to clipboard: " + text);
+      }
+
+      // Event listener for clicking on the shortened URL
+      document
+        .getElementById("shortenedUrl")
+        .addEventListener("click", function () {
+          const shortenedUrlText =
+            document.getElementById("shortenedUrl").innerText;
+     
+          const shortenedUrl = shortenedUrlText.replace("Shortened URL: ", "");
+        
+          copyToClipboard(shortenedUrl);
+        });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Opened Note--Private Note</title>
+    <link rel="stylesheet" href="./css/output.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
+    <link rel="shortcut icon" href="logo.jpeg" type="image/x-icon" />
+    <!-- <script src="https://cdn.tailwindcss.com"></script> -->
+  </head>
+  <body class="h-[100vh] items-center flex flex-col">
+    <!-- Main Container  -->
+    <div class="content h-[90%] w-[80%] bg-purple-200 mx-auto rounded-md p-3">
+      <!-- Date -->
+      <div class="date shadow-lg p-3 rounded-md bg-white">
+        <span class="font-bold underline">Date:</span>
+        <h1 id="date"></h1>
+      </div>
+      <!-- Note Name  -->
+
+      <div
+        class="noteName bg-white shadow-lg p-3 rounded-md my-3 h-[15%] overflow-auto"
+      >
+        <span class="font-bold underline">Note Name:</span>
+        <h1 id="noteName"></h1>
+      </div>
+      <!-- Main Note -->
+      <div class="note p-3 rounded-md shadow-lg bg-white flex flex-col h-[65%]">
+        <span class="font-bold underline">Note:</span>
+        <textarea
+          name="note"
+          id="note"
+          class="resize-none h-full bg-gray-200 p-2 rounded-md my-2 overflow-auto"
+          disabled
+        ></textarea>
+      </div>
+    </div>
+    <!-- Note Status -->
+    <div class="status my-1">
+      <h1
+        id="noteStatus"
+        class="w-fit bg-[#ff0000] px-2 text-center mx-auto text-white rounded-md"
+      >
+       
+      </h1>
+    </div>
+    <a href="/">
+      <div
+        class="backbtn bg-yellow-200 hover:bg-yellow-300 p-2 my-2 duration-500 rounded-md flex"
+      >
+        <span class="material-symbols-outlined"> arrow_back </span>
+        <button>Back to Home</button>
+      </div>
+    </a>
+    <script>
+      let params = new URLSearchParams(window.location.search);
+      let noteName = params.get("name");
+      let notePass = params.get("pass");
+      //main function of the page
+      async function noteNameAndPass(noteName, notePass) {
+        try {
+          const URL = "http://localhost:3000/api/read-note";
+          //body data
+          let body = {
+            name: noteName,
+            password: notePass,
+          };
+          //request options
+          let requestOptions = {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(body),
+          };
+          //call api and get the response
+          let response = await fetch(URL, requestOptions);
+          //response is in json format
+          let data = await response.json();
+          //If note found
+          if (response.ok) {
+            // console.log(data);
+            document.getElementById("date").innerText = data.createdAt;
+            document.getElementById("noteName").innerText = data.name;
+            document.getElementById("note").value = data.note;
+            document.getElementById("noteStatus").innerText =
+              "Don't share your notes with anyone";
+          }
+          //if note not found
+          else if (response.status === 404) {
+            document.getElementById("noteStatus").innerText = "Note not found";
+          }
+          //if any another problem
+          else {
+            let errorMessage = await response.text();
+            document.getElementById("noteStatus").innerText = errorMessage;
+          }
+        } catch (error) {
+          console.error("Error reading note:", error);
+          document.getElementById("noteStatus").innerText =
+            "Error reading note";
+        }
+      }
+      //call function to call API
+      noteNameAndPass(noteName, notePass);
+    </script>
+  </body>
+</html>

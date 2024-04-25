@@ -52,7 +52,7 @@
         if (sender_socket_id != socket.id) {
           // Create a link element
           const link = document.createElement("a");
-          link.href = fileName;
+          link.href = `/uploads/${fileName}`;
 
           // Extract the file name from the file path
 
@@ -70,9 +70,11 @@
 
           // Clear the file input field after successful upload
           document.getElementById("fileInput").value = "";
-          socket.emit("delete-file", fileName);
         } else {
-          alert("Transferred successfully!");
+          alert(
+            "File Transferred to server successfully!\nIf your friend connected then he/she will get."
+          );
+          socket.emit("delete-file", fileName);
         }
       });
     </script>

@@ -1,10 +1,10 @@
-import { useState } from 'react';
-import firebase from 'firebase/app';
-import 'firebase/storage';
+import { useState } from "react";
+import firebase from "firebase/app";
+import "firebase/storage";
 
 const FileSharingApp = () => {
   const [file, setFile] = useState(null);
-  const [downloadURL, setDownloadURL] = useState('');
+  const [downloadURL, setDownloadURL] = useState("");
 
   const handleFileUpload = async () => {
     if (file) {
@@ -13,7 +13,29 @@ const FileSharingApp = () => {
 
       await fileRef.put(file);
       const url = await fileRef.getDownloadURL();
-      setDownloadURL(url);
+      try {
+        const options = {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+            "X-RapidAPI-Key":
+              "3ae601cd46mshc787070de6757b3p117e95jsna41f319e0be1",
+            "X-RapidAPI-Host": "url-shortener-service.p.rapidapi.com",
+          },
+          body: new URLSearchParams({
+            url: url,
+          }),
+        };
+
+        let res = await fetch(
+          "https://url-shortener-service.p.rapidapi.com/shorten",
+          options
+        );
+
+        setDownloadURL(res.result_url);
+      } catch (error) {
+        setDownloadURL("Internal Server Error!");
+      }
     }
   };
 

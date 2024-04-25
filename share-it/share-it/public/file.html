@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>File Upload</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.lordicon.com/lordicon.js"></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/toastify-js"
+    ></script>
+  </head>
+  <body class="font-sans bg-gray-100 flex justify-center items-center h-screen">
+    <div
+      class="container mx-auto flex flex-col items-center max-w-md py-8 border border shadow-lg"
+    >
+      <h2 class="text-center text-2xl font-bold mb-4">Receiving from Sender</h2>
+      <lord-icon
+        src="https://cdn.lordicon.com/mgtqmgmg.json"
+        trigger="loop"
+        delay="100"
+        style="width: 50px; height: 50px"
+      >
+      </lord-icon>
+    </div>
+    <script src="https://cdn.socket.io/4.7.4/socket.io.min.js"></script>
+    <script>
+      const socket = io("/share");
+      socket.on("connect", () => {
+        document.getElementById("socketId").value = socket.id;
+      });
+      socket.on("receive-file", (fileName, sender_socket_id) => {
+        if (sender_socket_id != socket.id) {
+          // Create a link element
+          const link = document.createElement("a");
+          link.href = `/uploads/${fileName}`;
+
+          // Extract the file name from the file path
+
+          // Set the filename for download
+          link.setAttribute("download", fileName);
+
+          // Append the link to the body
+          document.body.appendChild(link);
+
+          // Trigger the click event to start the download
+          link.click();
+
+          // Remove the link from the body
+          document.body.removeChild(link);
+
+          // Clear the file input field after successful upload
+          document.getElementById("fileInput").value = "";
+          socket.emit("delete-file", fileName);
+         
+        } else {
+          alert("Transferred successfully!");
+        }
+      });
+    </script>
+  </body>
+</html>

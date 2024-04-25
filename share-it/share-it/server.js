@@ -40,19 +40,19 @@ send.on("connection", (socket) => {
 const share = io.of("/share");
 //Request for delete File
 share.on("connection", (socket) => {
-  //   console.log("User Connected");
-
-  // Listen for "delete-file" event on each individual socket
   socket.on("delete-file", (fileName) => {
+    // console.log(fileName)
     const filePath = path.join(__dirname, "uploads", fileName);
-    if (fs.existsSync(filePath)) {
-      fs.unlinkSync(filePath);
-      console.log(`File ${fileName} deleted successfully.`);
-    } else {
-      console.log(`File ${fileName} does not exist.`);
-    }
+    fs.unlink(filePath, (err) => {
+      if (err) {
+        console.error(`Error deleting file ${fileName}:`, err);
+      } else {
+        // console.log(`File ${fileName} deleted successfully.`);
+      }
+    });
   });
 });
+
 // Handle file uploads
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -70,19 +70,17 @@ const upload = multer({
   storage: storage,
 }).single("file");
 
-app.post("/upload", (req, res) => {
-  upload(req, res, (err) => {
-    if (err) {
-      console.error(err);
-      res.status(500).send("An error occurred while uploading the file.");
-    } else {
-      const filePath = req.file.path;
-      const socketId = req.body.socketId; // Extract socket ID from request body
-      share.emit("receive-file", path.basename(filePath), socketId);
-      res.redirect("/share");
-    }
-  });
+app.post("/upload", upload, (req, res) => {
+  // Now you can access req.file since multer middleware has already processed the file upload
+  if (!req.file) {
+    return res.status(400).send("No file uploaded.");
+  }
+  const filePath = req.file.path;
+  const socketId = req.body.socketId; // Extract socket ID from request body
+  share.emit("receive-file", path.basename(filePath), socketId);
+  res.redirect("/share");
 });
+
 
 // Routes
 app.get("/", (req, res) => {
@@ -95,6 +93,12 @@ app.get("/send", (req, res) => {
 
 app.get("/share", (req, res) => {
   res.sendFile(path.join(__dirname, "public/share.html"));
+});
+app.get("/receive", (req, res) => {
+  res.sendFile(path.join(__dirname, "public/receive.html"));
+});
+app.get("/file", (req, res) => {
+  res.sendFile(path.join(__dirname, "public/file.html"));
 });
 
 // Default route for handling undefined routes

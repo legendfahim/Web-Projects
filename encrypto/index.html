@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Encrypto</title>
+    <meta
+      name="description"
+      content="Encrypto is a web app that allows you to encrypt and decrypt text using a simple interface."
+    />
+    <meta name="keywords" content="encryption, decryption, web app" />
+    <meta name="author" content="Istiak Rahman" />
+    <!-- <script src="https://cdn.tailwindcss.com"></script>  -->
+    <link href="./src/output.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="./public/logo.jpeg" type="image/x-icon" />
+  </head>
+  <body class="h-fit">
+    <!-- header / navbar  -->
+    <header class="text-gray-400 bg-gray-900 body-font">
+      <div
+        class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center"
+        bis_skin_checked="1"
+      >
+        <a
+          href="/"
+          class="flex title-font font-medium items-center text-white mb-4 md:mb-0"
+        >
+          <img
+            src="./public/logo.jpeg"
+            alt="Logo here"
+            class="w-14 h-10 rounded-full animate-pulse"
+          />
+          <span class="ml-3 text-xl">EnCrypto</span>
+        </a>
+      </div>
+    </header>
+    <!-- main section  -->
+    <section class="flex flex-col mx-auto h-full">
+      <div class="left sm:w-1/2 sm:h-[10rem] my-2 w-[85%] mx-auto h-auto">
+        <!-- Selection section  -->
+        <select
+          id="operation"
+          class="border-2 bg-inherit w-full sm:w-auto"
+          onchange="updateHeading(this)"
+        >
+          <option value="Encryption">Encryption</option>
+          <option value="Decryption">Decryption</option>
+        </select>
+        <!-- left side text area  -->
+        <textarea
+          name="left"
+          id="data"
+          class="resize-none p-2 bg-slate-300 my-2 w-full h-32 sm:h-full shadow-md rounded"
+        ></textarea>
+      </div>
+      <div class="right sm:w-1/2 sm:h-[10rem] my-2 w-[85%] mx-auto h-auto">
+        <!-- right side text area  -->
+        <h1
+          id="operationTitle"
+          class="text-md font-bold text-[darkgoldenrod] mt-5"
+        >
+          Encryption
+        </h1>
+        <textarea
+          name="right"
+          id="result"
+          class="resize-none p-2 bg-gray-600 my-2 w-full h-32 sm:h-full text-[wheat] shadow-md rounded focus:outline-none"
+          readonly
+        ></textarea>
+      </div>
+      <div class="w-full sm-w-[85%] sm:mt-[65px] flex justify-center">
+        <button
+          class="bg-red-200 hover:bg-red-300 duration-500 w-[85%] sm:w-[50%] h-10 mx-auto rounded-md font-bold"
+          onclick="handleSubmit()"
+        >
+          Convert
+        </button>
+      </div>
+    </section>
+
+    <script src="./index.js"></script>
+  </body>
+</html>

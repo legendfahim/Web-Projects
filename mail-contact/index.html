@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Email-Manager || Developed by Istiak Rahman</title>
+    <link rel="stylesheet" href="./output.css" />
+    <link rel="shortcut icon" href="./logo.jpg" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jersey+20+Charted&family=Tac+One&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="h-fit bg-gradient-to-r from-[#945cde] to-[#f7c0c0]">
+    <!-- Header  -->
+    <div class="tite text-center h-20 pt-3">
+      <h1 class="text-2xl w-fit mx-auto font-g" id="title">
+        <span class="font-bold">Email</span>-Manager
+      </h1>
+      <p class="hidden font-bold font-g" id="credit">
+        Developed by <span class="underline">Istiak Rahman</span>
+      </p>
+    </div>
+    <!-- Input field / main  -->
+    <section
+      class="w-[80%] mx-auto mt-10 p-2 bg-white rounded-lg shadow-lg"
+      id="input-section"
+    >
+      <div class="input">
+        <input
+          type="text"
+          name="name"
+          id="name"
+          placeholder="Enter User name"
+          class="h-10 w-full p-2 rounded-lg border-2 border-gray-300 focus:outline-none focus:border-blue-500"
+        />
+        <input
+          type="email"
+          name="mail"
+          id="mail"
+          placeholder="Enter user Email"
+          class="h-10 w-full p-2 rounded-lg border-2 my-2 border-gray-300 focus:outline-none focus:border-blue-500"
+        />
+        <!-- Save button  -->
+        <button
+          class="bg-orange-400 hover:bg-orange-500 text-white px-4 py-2 rounded-lg duration-500"
+          id="save-btn"
+          onclick="handleSubmit()"
+        >
+          <span class="material-symbols-outlined text-[20px]"> book </span> Save
+        </button>
+      </div>
+    </section>
+    <!-- View section  -->
+    <section
+      class="w-[80%] h-[30%] mx-auto mt-2 p-2 bg-white rounded-lg shadow-lg"
+      id="input-section"
+    >
+      <!-- View section title  -->
+      <h1 class="text-center  text-xl font-bold">
+        Your Emails
+      </h1>
+      <!-- Each user info Start -->
+      <div id="mails">
+        <!-- <div
+          class="data flex bg-red-300 p-2 justify-normal rounded"
+        >
+          <span
+            class="name bg-gray-300 p-2 rounded-md w-1/3 text-center font-bold"
+            >Fahim</span
+          >
+          <span
+            class="Email bg-blue-300 w-2/3 p-2 rounded-md text-center font-bold"
+            >Fahim@gmail.com</span
+          >
+        </div> -->
+      </div>
+      <!-- Each user info End -->
+    </section>
+    <script src="./script.js"></script>
+  </body>
+</html>

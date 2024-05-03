@@ -1,0 +1,18 @@
+{
+  "name": "encrypto-backend",
+  "version": "1.0.0",
+  "description": "Encrypto is a web app that allows you to encrypt and decrypt text using a simple interface.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "cryptr": "^6.3.0",
+    "express": "^4.19.2",
+    "printl": "^1.0.3"
+  }
+}

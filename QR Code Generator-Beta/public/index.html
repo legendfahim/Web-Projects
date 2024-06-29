@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-purple-200">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QR Code Generator</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <div>
+        <section class="body-font relative mx-auto">
+            <div class="container px-5 py-24 mx-auto">
+                <div class="flex flex-col text-center w-full mb-12">
+                    <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-gray-900">
+                        QR Code Generator
+                    </h1>
+                </div>
+                <div class="lg:w-1/2 md:w-2/3 mx-auto">
+                    <div class="flex flex-wrap justify-center">
+                        <div class="p-2 w-full">
+                            <div class="relative">
+                                <label for="name" class="leading-7 text-lg text-gray-600">Link</label>
+                                <input type="url" id="name" name="name" class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-green-500 focus:bg-white focus:ring-2 focus:ring-green-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"/>
+                            </div>
+                        </div>
+                        <div class="p-2 w-full">
+                            <button id="generate" class="flex mx-auto text-white bg-green-500 border-0 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg" onclick="qrCode()">Generate</button>
+                        </div>
+                        <img id="qr" src="" alt="QR code Not Found" class="m-4" hidden />
+                    </div>
+                    <div id="txt" class="text-center text-lg text-blue-500" hidden>
+                        <a id="download" download="QrCode.png" target="_blank">Download QR code</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>
